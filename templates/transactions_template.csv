@@ -1,0 +1,3 @@
+id,customer_id,type,amount,date,payment_method,reference_no,is_installment,installment_count,installment_number,notes,order_id
+1,1,payment,500.00,2024-03-20,cash,REF001,0,,,Ödeme notu,
+2,2,debt,250.00,2024-03-21,bank_transfer,REF002,1,3,1,Borç notu,1

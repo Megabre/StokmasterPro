@@ -1,0 +1,162 @@
+/**
+ * Megabre StokMaster Pro
+ * Dashboard Styles
+ */
+
+/* Welcome Section */
+.welcome-section {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-section h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.welcome-section .date-time {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.welcome-section .current-time {
+    font-size: 2.5rem;
+    font-weight: 300;
+    text-align: right;
+}
+
+/* Stats Cards */
+.dashboard-stats .stat-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.dashboard-stats .stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.dashboard-stats .stat-value {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.dashboard-stats .stat-title {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.dashboard-stats .stat-icon {
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2.5rem;
+    opacity: 0.2;
+}
+
+/* Quick Actions */
+.quick-actions {
+    margin-top: 2rem;
+}
+
+.quick-actions h4 {
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+}
+
+.quick-action-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.quick-action-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.quick-action-card .icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.quick-action-card h5 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.quick-action-card p {
+    color: #666;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Charts */
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+}
+
+.card-header {
+    background: white;
+    border-bottom: 1px solid #eee;
+    padding: 1rem 1.5rem;
+}
+
+.card-title {
+    color: #2c3e50;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .welcome-section {
+        padding: 1.5rem;
+    }
+    
+    .welcome-section h2 {
+        font-size: 1.5rem;
+    }
+    
+    .welcome-section .current-time {
+        font-size: 2rem;
+        text-align: left;
+        margin-top: 1rem;
+    }
+    
+    .dashboard-stats .stat-value {
+        font-size: 1.5rem;
+    }
+    
+    .dashboard-stats .stat-icon {
+        font-size: 2rem;
+    }
+    
+    .quick-action-card {
+        padding: 1rem;
+    }
+    
+    .quick-action-card .icon {
+        font-size: 1.5rem;
+    }
+}
