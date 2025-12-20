@@ -1,49 +1,51 @@
 # StokMaster Pro v1.1.3
 
-**Profesyonel Stok ve Envanter Yönetim Sistemi**
+**Professional Stock and Inventory Management System**
 
-StokMaster Pro, işletmelerin stok, ürün, müşteri ve sipariş takibini kolaylıkla yapmasını sağlayan kapsamlı bir web tabanlı yönetim sistemidir. Modern arayüzü, güçlü özellikleri ve esnek yapısı ile küçük ve orta ölçekli işletmeler için ideal bir çözümdür.
+StokMaster Pro is a comprehensive web-based management system that enables businesses to easily track stock, products, customers, and orders. With its modern interface, powerful features, and flexible structure, it is an ideal solution for small and medium-sized businesses.
 
----
-
-##  Özellikler
-
-### Genel Özellikler
--  Modern ve responsive Tabler.io tabanlı arayüz
--  Çoklu dil desteği (Türkçe/İngilizce)
--  Rol tabanlı yetkilendirme sistemi
--  Detaylı aktivite loglama (audit trail)
--  Dinamik alan sistemi (ürünler, kategoriler, müşteriler, stok)
--  Gelişmiş raporlama ve analiz
--  Excel/CSV içe/dışa aktarma
--  Otomatik yedekleme sistemi
--  Veritabanı optimizasyon araçları
--  Çoklu para birimi desteği
--  Müşteri etiketleme sistemi
--  Ölçü birimi yönetimi
-
-### Teknik Özellikler
-- PHP 7.4+ uyumlu
-- MySQL/MariaDB veritabanı
-- PDO ile güvenli veritabanı erişimi
-- CSRF koruması
-- XSS koruması
-- SQL injection koruması
-- Session yönetimi
-- Cache sistemi
+For detailed information and features, please visit: **[https://www.megabre.com/stokmaster-pro.php](https://www.megabre.com/stokmaster-pro.php)**
 
 ---
 
-##  Sistem Gereksinimleri
+## Features
 
-### Sunucu Gereksinimleri
-- **PHP:** 7.4 veya üzeri
-- **MySQL/MariaDB:** 5.7 veya üzeri
-- **Web Sunucusu:** Apache 2.4+ veya Nginx
-- **PHP Eklentileri:**
+### General Features
+- Modern and responsive Tabler.io based interface
+- Multi-language support (Turkish/English)
+- Role-based authorization system
+- Detailed activity logging (audit trail)
+- Dynamic field system (products, categories, customers, stock)
+- Advanced reporting and analytics
+- Excel/CSV import/export
+- Automatic backup system
+- Database optimization tools
+- Multi-currency support
+- Customer tagging system
+- Measurement unit management
+
+### Technical Features
+- PHP 7.4+ compatible
+- MySQL/MariaDB database
+- Secure database access with PDO
+- CSRF protection
+- XSS protection
+- SQL injection protection
+- Session management
+- Cache system
+
+---
+
+## System Requirements
+
+### Server Requirements
+- **PHP:** 7.4 or higher
+- **MySQL/MariaDB:** 5.7 or higher
+- **Web Server:** Apache 2.4+ or Nginx
+- **PHP Extensions:**
   - PDO
   - PDO_MySQL
-  - GD veya Imagick (resim işleme için)
+  - GD or Imagick (for image processing)
   - mbstring
   - json
   - session
@@ -51,50 +53,50 @@ StokMaster Pro, işletmelerin stok, ürün, müşteri ve sipariş takibini kolay
 
 ---
 
-##  Kurulum
+## Installation
 
-### 1. Dosyaları Yükleme
+### 1. Upload Files
 
 ```bash
-# Projeyi klonlayın veya ZIP dosyasını çıkarın
+# Clone the project or extract the ZIP file
 cd /path/to/your/web/directory
 ```
 
-### 2. Veritabanı Kurulumu
+### 2. Database Setup
 
-1. MySQL/MariaDB'de yeni bir veritabanı oluşturun:
+1. Create a new database in MySQL/MariaDB:
 ```sql
 CREATE DATABASE stok CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ```
 
-2. `stok.sql` dosyasını içe aktarın:
+2. Import the `stok.sql` file:
 ```bash
-mysql -u kullanici_adi -p stok < stok.sql
+mysql -u username -p stok < stok.sql
 ```
 
-veya phpMyAdmin üzerinden `stok.sql` dosyasını import edin.
+Or import the `stok.sql` file via phpMyAdmin.
 
-### 3. Yapılandırma
+### 3. Configuration
 
-`config/database.php` dosyasını düzenleyin:
+Edit `config/database.php`:
 
 ```php
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'stok');
-define('DB_USER', 'kullanici_adi');
-define('DB_PASS', 'sifre');
+define('DB_USER', 'username');
+define('DB_PASS', 'password');
 define('DB_CHARSET', 'utf8mb4');
 ```
 
-`config/config.php` dosyasında BASE_URL'yi düzenleyin:
+Edit BASE_URL in `config/config.php`:
 
 ```php
 define('APP_URL', 'http://yourdomain.com/stok');
 ```
 
-### 4. Klasör İzinleri
+### 4. Folder Permissions
 
-Aşağıdaki klasörlerin yazılabilir olması gerekir:
+The following folders must be writable:
 
 ```bash
 chmod 755 uploads/
@@ -106,441 +108,218 @@ chmod 755 backup/
 chmod 755 cache/
 ```
 
-### 5. İlk Giriş
+### 5. First Login
 
-Varsayılan admin bilgileri:
-- **Kullanıcı Adı:** admin
-- **Şifre:** admin123
+Default admin credentials:
+- **Username:** admin
+- **Password:** admin123
 
- **Güvenlik Uyarısı:** İlk girişten sonra mutlaka şifrenizi değiştirin!
-
----
-
-##  Modüller
-
-### 1. Dashboard (Ana Sayfa)
-
-**Özellikler:**
-- Genel istatistikler (toplam ürün, müşteri, sipariş, stok)
-- Hızlı işlemler menüsü
-- Aylık ödemeler ve borçlar grafiği (stacked bar chart)
-- Ürün kategorileri dağılımı (donut chart)
-- Son işlemler listesi
-- Özelleştirilebilir widget görünürlüğü
-
-**Erişim:** Tüm kullanıcılar
+**Security Warning:** Please change your password after first login!
 
 ---
 
-### 2. Ürünler Modülü
+## Modules
 
-**Özellikler:**
-- Ürün ekleme, düzenleme, silme
-- Kategori bazlı ürün yönetimi
-- SKU ve barkod yönetimi
-- Ürün fiyatlandırma
-- Minimum stok seviyesi takibi
-- Ürün görseli yükleme
-- Dinamik alan desteği
-- Toplu işlemler
-- Gelişmiş filtreleme ve arama
-- Stok durumu gösterimi (stokta, kritik, tükendi)
+### 1. Dashboard
+- General statistics (total products, customers, orders, stock)
+- Quick actions menu
+- Monthly payments and debts chart
+- Product categories distribution
+- Recent transactions list
+- Customizable widget visibility
 
-**Erişim:** Admin, Manager, Staff
+### 2. Products
+- Product CRUD operations
+- Category-based product management
+- SKU and barcode management
+- Product pricing
+- Minimum stock level tracking
+- Product image upload
+- Dynamic field support
+- Bulk operations
 
-**Alt Modüller:**
-- `index.php` - Ürün listesi
-- `add.php` - Yeni ürün ekleme
-- `edit.php` - Ürün düzenleme
-- `delete.php` - Ürün silme
-- `view.php` - Ürün detayları
-- `fields.php` - Dinamik alan yönetimi
+### 3. Categories
+- Category CRUD operations
+- Category-based dynamic field definition
+- Category statistics
 
----
+### 4. Customers
+- Customer CRUD operations
+- Customer detail page
+- Customer order history
+- Customer financial history (payment/debt)
+- Customer balance tracking
+- Customer tagging system
+- Dynamic field support
 
-### 3. Kategoriler Modülü
+### 5. Stock
+- Stock entry/exit operations
+- Stock adjustment
+- Stock movement history
+- Product-based stock tracking
+- Unit-based stock management
 
-**Özellikler:**
-- Kategori ekleme, düzenleme, silme
-- Kategori bazlı dinamik alan tanımlama
-- Kategori hiyerarşisi (gelecekte)
-- Kategori bazlı raporlama
-- Kategori istatistikleri
+### 6. Orders
+- Order creation
+- Order editing and deletion
+- Order status management (Pending, Processing, Completed, Cancelled)
+- Order detail page
+- Order printing
+- VAT calculation
 
-**Erişim:** Admin, Manager
+### 7. Financial Transactions
+- Payment/debt/expense management
+- Multi-currency support
+- Payment methods (Cash, Check, Promissory Note, Credit Card, Wire Transfer/EFT)
+- Customer-based financial history
+- Cash summary
 
-**Alt Modüller:**
-- `index.php` - Kategori listesi
-- `add.php` - Yeni kategori ekleme
-- `edit.php` - Kategori düzenleme
-- `delete.php` - Kategori silme
-- `fields.php` - Kategori dinamik alanları
+### 8. Tools
+- **Reports:** Sales, stock, and customer reports
+- **Calculators:** Unit conversions, price calculations, VAT calculations
+- **Database Optimization:** Table optimization, fragmentation analysis, cache clearing
+- **Backup:** Automatic and manual database backup, restore
+- **Import/Export:** Excel/CSV import/export for all modules
+- **Cache Management:** Cache clearing and statistics
 
----
+### 9. Settings
+- System settings (company information, logo, timezone, date format)
+- User management (roles: Admin, Manager, Accountant, Staff, Viewer)
+- Inventory settings (low stock level, default unit, SKU settings)
+- Currency management
+- Customer tags
+- Measurement units
 
-### 4. Müşteriler Modülü
+### 10. Activity Log
+- Detailed logging of all system activities
+- User-based filtering
+- Operation type filtering
+- Date-based filtering
+- Change details (old/new values)
 
-**Özellikler:**
-- Müşteri ekleme, düzenleme, silme
-- Müşteri detay sayfası
-- Müşteri sipariş geçmişi
-- Müşteri mali geçmişi (ödeme/borç)
-- Müşteri bakiyesi takibi
-- Müşteri etiketleme sistemi
-- Dinamik alan desteği
-- Gelişmiş filtreleme (isim, telefon, e-posta, şirket)
-- Müşteri borç/ödeme ekleme (hızlı işlemler)
-
-**Erişim:** Admin, Manager, Accountant, Staff
-
-**Alt Modüller:**
-- `index.php` - Müşteri listesi
-- `add.php` - Yeni müşteri ekleme
-- `edit.php` - Müşteri düzenleme
-- `delete.php` - Müşteri silme
-- `view.php` - Müşteri detay sayfası
-- `fields.php` - Müşteri dinamik alanları
-- `filter.php` - Gelişmiş filtreleme
-
----
-
-### 5. Stok Modülü
-
-**Özellikler:**
-- Stok giriş/çıkış işlemleri
-- Stok düzeltme (adjustment)
-- Stok hareket geçmişi
-- Ürün bazlı stok takibi
-- Dinamik alan desteği
-- Stok hareket notları
-- Birim bazlı stok yönetimi
-- Negatif stok kontrolü (ayarlanabilir)
-
-**Erişim:** Admin, Manager, Staff
-
-**Alt Modüller:**
-- `index.php` - Stok hareket listesi
-- `add.php` - Yeni stok hareketi
-- `edit.php` - Stok hareketi düzenleme
-- `delete.php` - Stok hareketi silme
-- `fields.php` - Stok dinamik alanları
+### 11. Profile
+- Profile information update
+- Profile picture upload
+- Password change
+- Language preference
+- Activity summary
 
 ---
 
-### 6. Siparişler Modülü
+## Configuration
 
-**Özellikler:**
-- Sipariş oluşturma
-- Sipariş düzenleme ve silme
-- Sipariş durumu yönetimi (Beklemede, İşleniyor, Tamamlandı, İptal)
-- Sipariş detay sayfası
-- Sipariş yazdırma (PDF benzeri format)
-- Müşteri bazlı sipariş listesi
-- Tarih bazlı filtreleme
-- Sipariş özeti ve toplamları
-- KDV hesaplama
+### Database Settings
+Edit database connection information in `config/database.php`.
 
-**Erişim:** Admin, Manager, Accountant, Staff
+### Application Settings
+In `config/config.php`:
+- `APP_NAME`: Application name
+- `APP_VERSION`: Version number
+- `APP_URL`: Application URL
+- `APP_TIMEZONE`: Timezone
 
-**Alt Modüller:**
-- `index.php` - Sipariş listesi
-- `add.php` - Yeni sipariş oluşturma
-- `edit.php` - Sipariş düzenleme
-- `delete.php` - Sipariş silme
-- `view.php` - Sipariş detay sayfası
-- `print.php` - Sipariş yazdırma
-- `update_status.php` - Sipariş durumu güncelleme
+### Language Settings
+- `lang/tr.php`: Turkish translations
+- `lang/en.php`: English translations
+
+To add a new language, add a new PHP file to the `lang/` folder.
 
 ---
 
-### 7. Mali İşlemler Modülü
+## Security
 
-**Özellikler:**
-- Ödeme ekleme/düzenleme/silme
-- Borç ekleme/düzenleme/silme
-- Gider ekleme/düzenleme/silme
-- Çoklu para birimi desteği
-- Ödeme yöntemleri (Nakit, Çek, Senet, Kredi Kartı, Havale/EFT)
-- Müşteri bazlı mali geçmiş
-- Tarih bazlı filtreleme
-- Nakit özeti
-- Gider kategorileri
-
-**Erişim:** Admin, Manager, Accountant
-
-**Alt Modüller:**
-- `index.php` - İşlem listesi
-- `add-payment.php` - Ödeme ekleme
-- `add-debt.php` - Borç ekleme
-- `add-expense.php` - Gider ekleme
-- `delete.php` - İşlem silme
-- `expenses.php` - Gider listesi
-- `cash-summary.php` - Nakit özeti
-- `show.php` - İşlem detayı
-
----
-
-### 8. Araçlar Modülü
-
-#### 8.1. Raporlar
-- **Satış Raporu:** Günlük satış grafiği, kategori bazlı satışlar, en çok satan ürünler
-- **Stok Raporu:** Kategori bazlı stok dağılımı, stok durumu, düşük stok uyarıları
-- **Müşteri Raporu:** Müşteri dağılımı, aktif/pasif müşteri analizi
-- Tarih aralığı filtreleme
-- Yazdırma desteği (şirket logosu ve bilgileri ile)
-
-#### 8.2. Hesaplayıcılar
-- Birim dönüşümleri
-- Fiyat hesaplamaları
-- KDV hesaplamaları
-
-#### 8.3. Veritabanı Optimizasyonu
-- Tablo optimizasyonu
-- Fragmentasyon analizi
-- Cache temizleme
-- Tablo analiz ve kontrol
-- Toplu işlemler
-
-#### 8.4. Yedekleme
-- Otomatik veritabanı yedekleme
-- Manuel yedekleme
-- Yedek geri yükleme
-- Yedek listesi ve indirme
-
-#### 8.5. İçe/Dışa Aktarım
-- Ürün, müşteri, kategori, stok, sipariş, işlem verilerini Excel/CSV formatında dışa aktarma
-- Excel/CSV dosyalarından veri içe aktarma
-- Şablon dosyaları
-- Toplu veri güncelleme
-
-#### 8.6. Cache Yönetimi
-- Cache temizleme
-- Cache istatistikleri
-
-**Erişim:** Admin, Manager (bazı araçlar sadece Admin)
-
----
-
-### 9. Ayarlar Modülü
-
-#### 9.1. Sistem Ayarları
-- Site adı
-- Firma bilgileri (ad, adres, telefon, e-posta, vergi no)
-- Firma logosu yükleme
-- Zaman dilimi
-- Tarih formatı
-- Varsayılan para birimi
-- Maksimum yükleme boyutu
-- Son işlemler tutma süresi
-- Sistem bilgileri (versiyon, PHP, MySQL)
-
-#### 9.2. Kullanıcı Yönetimi
-- Kullanıcı ekleme, düzenleme, silme
-- Rol yönetimi (Admin, Manager, Accountant, Staff, Viewer)
-- Kullanıcı profil resmi
-- Şifre sıfırlama
-
-#### 9.3. Envanter Ayarları
-- Düşük stok uyarı seviyesi
-- Varsayılan ölçü birimi
-- Otomatik SKU oluşturma
-- SKU ön eki
-- Stok hareket notları zorunluluğu
-- Negatif stok izni
-- Stok geçmişi tutma
-- Sipariş otomatik durumu
-- İptal edilen siparişlerin stoka geri dönmesi
-
-#### 9.4. Para Birimleri
-- Para birimi ekleme, düzenleme, silme
-- Döviz kurları
-- Para birimi formatları
-- Varsayılan para birimi
-
-#### 9.5. Müşteri Etiketleri
-- Etiket ekleme, düzenleme, silme
-- Etiket renkleri
-- İndirim yüzdeleri
-
-#### 9.6. Ölçü Birimleri
-- Birim ekleme, düzenleme, silme
-- Birim sembolleri
-- Varsayılan birim
-
-**Erişim:** Sadece Admin
-
----
-
-### 10. Son İşlemler Modülü
-
-**Özellikler:**
-- Tüm sistem aktivitelerinin detaylı loglanması
-- Kullanıcı bazlı filtreleme
-- İşlem türü bazlı filtreleme
-- Tarih bazlı filtreleme
-- Değişiklik detayları (eski/yeni değerler)
-- Timeline görünümü
-- IP adresi ve tarayıcı bilgisi
-- Tutma süresi yönetimi (ayarlardan)
-
-**Loglanan İşlemler:**
-- Ürün ekleme/düzenleme/silme
-- Kategori ekleme/düzenleme/silme
-- Müşteri ekleme/düzenleme/silme
-- Stok hareketleri
-- Sipariş işlemleri
-- Mali işlemler (ödeme, borç, gider)
-- Ayarlar değişiklikleri
-- Kullanıcı işlemleri
-- Profil güncellemeleri
-
-**Erişim:** Tüm kullanıcılar (kendi işlemlerini görebilir)
-
----
-
-### 11. Profil Modülü
-
-**Özellikler:**
-- Profil bilgileri güncelleme
-- Profil resmi yükleme
-- Şifre değiştirme
-- Dil tercihi
-- Aktivite özeti
-
-**Erişim:** Tüm kullanıcılar (kendi profilleri)
-
----
-
-## ⚙️ Yapılandırma
-
-### Veritabanı Ayarları
-`config/database.php` dosyasında veritabanı bağlantı bilgilerini düzenleyin.
-
-### Uygulama Ayarları
-`config/config.php` dosyasında:
-- `APP_NAME`: Uygulama adı
-- `APP_VERSION`: Versiyon numarası
-- `APP_URL`: Uygulama URL'i
-- `APP_TIMEZONE`: Zaman dilimi
-
-### Dil Ayarları
-- `lang/tr.php`: Türkçe çeviriler
-- `lang/en.php`: İngilizce çeviriler
-
-Yeni dil eklemek için `lang/` klasörüne yeni bir PHP dosyası ekleyin.
-
----
-
-##  Güvenlik
-
-### Güvenlik Özellikleri
-- ✅ CSRF token koruması
-- ✅ XSS koruması (htmlspecialchars)
-- ✅ SQL injection koruması (PDO prepared statements)
-- ✅ Session güvenliği
-- ✅ Şifre hashleme (password_hash)
-- ✅ Rol tabanlı erişim kontrolü
-- ✅ Dosya yükleme validasyonu
+### Security Features
+- ✅ CSRF token protection
+- ✅ XSS protection (htmlspecialchars)
+- ✅ SQL injection protection (PDO prepared statements)
+- ✅ Session security
+- ✅ Password hashing (password_hash)
+- ✅ Role-based access control
+- ✅ File upload validation
 - ✅ Input sanitization
 
-### Güvenlik Önerileri
-1. İlk kurulumdan sonra admin şifresini değiştirin
-2. Güçlü şifreler kullanın
-3. Düzenli yedekleme yapın
-4. Sistem güncellemelerini takip edin
-5. HTTPS kullanın (production ortamında)
-6. `config/` klasörünün erişim izinlerini kontrol edin
+### Security Recommendations
+1. Change admin password after first installation
+2. Use strong passwords
+3. Perform regular backups
+4. Keep system updated
+5. Use HTTPS (in production environment)
+6. Check access permissions for `config/` folder
 
 ---
-##  Yedekleme ve Geri Yükleme
 
-### Otomatik Yedekleme
-- Ayarlar > Araçlar > Yedekleme menüsünden otomatik yedekleme yapılabilir
-- Yedekler `backup/` klasörüne kaydedilir
+## Backup and Restore
 
-### Manuel Yedekleme
+### Automatic Backup
+- Automatic backup can be performed from Settings > Tools > Backup menu
+- Backups are saved to `backup/` folder
+
+### Manual Backup
 ```bash
-mysqldump -u kullanici_adi -p stok > backup_manuel.sql
+mysqldump -u username -p stok > backup_manual.sql
 ```
 
-### Geri Yükleme
-1. Ayarlar > Araçlar > Yedekleme
-2. Geri yüklenecek yedeği seçin
-3. "Geri Yükle" butonuna tıklayın
+### Restore
+1. Go to Settings > Tools > Backup
+2. Select the backup to restore
+3. Click "Restore" button
 
 ---
 
-##  Destek
+## Support
 
-### Resmi Destek
-- **Web Sitesi:** https://megabre.com
-- **E-posta:** hello@megabre.com
-- **Dokümantasyon:** [https://megabre.com/](https://www.megabre.com/stokmaster-pro.php)
-
-### Topluluk Desteği
-- GitHub Issues
-- Forum
+### Official Support
+- **Website:** https://megabre.com
+- **Email:** hello@megabre.com
+- **Documentation:** [https://www.megabre.com/stokmaster-pro.php](https://www.megabre.com/stokmaster-pro.php)
 
 ---
 
-##  Versiyon Geçmişi
+## Version History
 
-### v1.1.3 (Güncel)
-- Tabler.io entegrasyonu
-- ApexCharts entegrasyonu
-- Detaylı aktivite loglama sistemi
-- Müşteri detay sayfası
-- Rapor yazdırma iyileştirmeleri
-- Veritabanı optimizasyon modülü
-- Versiyon yönetim sistemi
+### v1.1.3 (Current)
+- Tabler.io integration
+- ApexCharts integration
+- Detailed activity logging system
+- Customer detail page
+- Report printing improvements
+- Database optimization module
+- Version management system
 
 ### v1.0.0
-- İlk sürüm
-- Temel modüller
-- Kullanıcı yönetimi
-- Stok yönetimi
+- Initial release
+- Basic modules
+- User management
+- Stock management
 
 ---
 
-##  Lisans
+## License
 
-Bu proje özel lisans altındadır. Tüm hakları saklıdır.
+This project is proprietary licensed. All rights reserved.
 
-**© 2024 Megabre. Tüm hakları saklıdır.**
+**© 2024 Megabre. All rights reserved.**
 
 ---
 
-##  Geliştirici
+## Developer
 
 **Ali Çömez / Slaweally**
 - **Web:** https://megabre.com
-- **E-posta:** info@megabre.com
+- **Email:** hello@megabre.com
 
 ---
 
-## 🙏 Teşekkürler
+## Acknowledgments
 
 - Tabler.io - Modern UI framework
-- ApexCharts - Grafik kütüphanesi
+- ApexCharts - Chart library
 - Bootstrap - CSS framework
-- jQuery - JavaScript kütüphanesi
-- Select2 - Gelişmiş select bileşeni
-- DataTables - Tablo eklentisi
+- jQuery - JavaScript library
+- Select2 - Advanced select component
+- DataTables - Table plugin
 
 ---
 
----
-
-##  Sistem İstatistikleri
-
-- **Toplam Modül:** 11
-- **Toplam Sayfa:** 50+
-- **Desteklenen Dil:** 2 (Türkçe, İngilizce)
-- **Kullanıcı Rolleri:** 5
-- **Dinamik Alan Desteği:** 4 modül
-
----
-
-**Son Güncelleme:** 2025
-**Versiyon:** 1.1.3
-
+**Last Update:** 2025  
+**Version:** 1.1.3
