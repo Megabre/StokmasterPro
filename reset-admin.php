@@ -9,10 +9,13 @@
  * @website https://megabre.com
  */
 
+// Output buffering başlat (çift çıktı sorununu önler)
+ob_start();
+
 // Hata raporlamayı aç
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+ini_set('display_errors', 0);
+ini_set('display_startup_errors', 0);
+error_reporting(0);
 
 // Config dosyalarını dahil et
 require_once 'config/config.php';
@@ -101,9 +104,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && empty($error)) {
             min-height: 100vh;
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
             display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
             align-items: center;
             justify-content: center;
             padding: 2rem 1rem;
+            margin: 0;
+        }
+        
+        body > * {
+            flex-shrink: 0;
         }
         
         .reset-container {
